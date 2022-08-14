@@ -30,6 +30,7 @@ const MAX_RAND = 29;
 const CELL_SIZE = 10;
 const CANVAS_WIDTH = 300; 
 const CANVAS_HEIGHT = 300;
+const DOT_SIZE = 10;
    
 const LEFT_KEY = 37;
 const RIGHT_KEY = 39;
@@ -64,6 +65,9 @@ function init() {
 
 function loadImages() {   
     
+    headImage = new Image();
+    headImage.src = 'images/head.png';
+
     bodyImage = new Image();
     bodyImage.src = 'images/body.png'; 
     
@@ -101,7 +105,14 @@ function drawApple() {
 
 function drawSnake() {
     for (let z = 0; z < snake.size; z++) {
+        if (z==0) 
+        {
+            canvasContext.drawImage(headImage, snake.x[z], snake.y[z]);
+        }
+        else
+        { 
         canvasContext.drawImage(bodyImage, snake.x[z], snake.y[z]);
+        }
     }
 }
 
@@ -116,10 +127,16 @@ function gameOver() {
 
 function locateApple() {
     // You have to write code here to place the apple in different position in the canvas
+    var r = Math.floor(Math.random() * MAX_RAND);
+    apple.x = r * DOT_SIZE;
+
+    r = Math.floor(Math.random() * MAX_RAND);
+    apple.yy = r * DOT_SIZE;
 }    
 
 function checkApple() {
     // You have to check here whether the apple is eaten by the snake or not
+   
 }
 
 function checkCollision() {
@@ -209,3 +226,4 @@ function gameCycle() {
         setTimeout("gameCycle()", DELAY);
     }
 }
+
