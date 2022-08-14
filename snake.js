@@ -89,9 +89,16 @@ function doDrawing() {
 
 function createInitialSnakePosition() {
 
-    for (let z = 0; z < snake.size; z++) {
-        snake.x[z] = 50 - z * CELL_SIZE;
-        snake.y[z] = 50;
+    // for (let z = 0; z < snake.size; z++) {
+    //     snake.x[z] = 50 - z * CELL_SIZE;
+    //     snake.y[z] = 50;
+    // }
+
+      for(let z = 0; z < snake.size; z++) {
+
+        snake.x[z]  = Math.floor((Math.random() * 300));
+        snake.y[z]  = Math.floor((Math.random() * 300));
+        
     }
 }   
 
