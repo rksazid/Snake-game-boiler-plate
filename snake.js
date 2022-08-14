@@ -10,6 +10,7 @@ let bodyImage;
 let headImage;
 let apple_x;
 let apple_y;
+let score=0;
 
 let apple = {
     x: 0,
@@ -48,9 +49,17 @@ function init() {
     snakeBodyDisappear = document.getElementById('snake-body-disappear').checked;
 
     if(circularWay) {
+
         // write the  code here
     }
     if(killedByHittingItself) {
+
+        for(var i=0;i<snake.length-1;i++)
+        {
+            if(head.x==snake[i].x && head.y==snake[i].y){
+                gameOver();
+            }
+        }
         
 
         // write the  code here
@@ -65,6 +74,7 @@ function init() {
     
 
    // head();
+   
     loadImages();
     createInitialSnakePosition();
     locateApple();
@@ -106,6 +116,7 @@ function doDrawing() {
     if (inGame) {
         drawApple();
         drawSnake();
+        //drawScore();
     } else {
         gameOver();
     }
@@ -173,12 +184,28 @@ function checkApple() {
         apple.x=randX*10;
         apple.y=randY*10;
         apple.size+=1;
+        snake.size+=1;
+        score+=1;
+        
 
 
 
     }
     // You have to check here whether the apple is eaten by the snake or not
 }
+
+
+ function drawScore()
+ {
+    
+        canvasContext.fillStyle = 'white'
+         
+        canvasContext.font = "10px verdena"
+        
+        scoreSpan.fillText("Score:"+score,canvas.clientWidth-50,10);
+
+ }
+
 
 function checkCollision() {
 
@@ -264,6 +291,7 @@ function gameCycle() {
         checkCollision();
         move();
         doDrawing();
+        //drawScore();
         setTimeout("gameCycle()", DELAY);
     }
 }
