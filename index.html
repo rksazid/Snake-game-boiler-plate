@@ -29,6 +29,17 @@
                 background: transparent; 
                 border-radius: 5px;
             }
+            .restart {
+                font-size: 18px; 
+                color: black; 
+                border-color: #80c37d; 
+                background: transparent; 
+                border-radius: 5px;
+            }
+            .restart-div { 
+                margin-top: 1%;
+                margin-bottom: 5px;
+            }
 
             .start-div { 
                 margin-top: 5%;
@@ -59,6 +70,9 @@
         </div>
         <div class="div-common score-div">
             <b style="color: #042303;">Score:  &nbsp;<span id="score">0</span></b>
+        </div>
+        <div class="div-common restart-div">
+            <button class="restart" onclick="init();">Restart</button>
         </div>
     </body>
 </html>
