@@ -9,8 +9,8 @@ let appleImage;
 let bodyImage;
 
 let apple = {
-    x: 0,
-    y: 0,
+    x : Math.random() * 300,
+    y : Math.random() * 300,
 };
 
 let snake = {
@@ -125,15 +125,11 @@ function gameOver() {
 function locateApple() {
     // You have to write code here to place the apple in different position in the canvas
 
-   if(snake.x[0]==apple.x){
-    x = Math.random() * CANVAS_WIDTH;
-    y = Math.random() * CANVAS_HEIGHT;
-   }
-
 }    
 
 function checkApple() {
     // You have to check here whether the apple is eaten by the snake or not
+
 }
 
 function checkCollision() {
