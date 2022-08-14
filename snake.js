@@ -131,6 +131,14 @@ function gameOver() {
 
 function locateApple() {
     // You have to write code here to place the apple in different position in the canvas
+    if(apple.x==snake.x[0]&&apple.y==snake.y[0]){
+        let newx=math.floor((math.random() * 29 ) + 1);
+        let newy=math.floor((math.random() * 29 ) + 1);
+        apple.x=newx*10;
+        apple.y=newy*10;
+        snake.size+=1;
+    }
+
    
     }    
 
