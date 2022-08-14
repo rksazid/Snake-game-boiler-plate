@@ -8,6 +8,8 @@ let snakeBodyDisappear;
 let appleImage;
 let bodyImage;
 let headImage;
+let countX = 0;
+let countY = 0;
 
 let apple = {
     x: 0,
@@ -113,16 +115,27 @@ function gameOver() {
     canvasContext.textBaseline = 'middle';
     canvasContext.textAlign = 'center';
     canvasContext.font = 'normal bold 18px serif';
-
     canvasContext.fillText('Game over', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
 }
 
 function locateApple() {
     // You have to write code here to place the apple in different position in the canvas
+    countX += 3;
+    countY += 1;
+    if (countX % 2) countY + 3;
+    apple.x = (countX % 30) * 10;
+    apple.y = (countY % 30) * 10;
 }
 
 function checkApple() {
-    // You have to check here whether the apple is eaten by the snake or not
+    if (snake.x[0] == apple.x && snake.y[0] == apple.y) {
+        locateApple();
+        scoreSpan += 1;
+        var value = document.getElementById("score");
+        scoreSpan = value.innerHTML;
+        scoreSpan++;
+        value.innerHTML = scoreSpan;
+    }
 }
 
 function checkCollision() {
@@ -200,6 +213,8 @@ function move() {
         snake.y[0] += CELL_SIZE;
     }
 }
+
+
 
 function gameCycle() {
 
