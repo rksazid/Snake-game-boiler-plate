@@ -131,7 +131,7 @@ function locateApple() {
     apple.x = r * DOT_SIZE;
 
     r = Math.floor(Math.random() * MAX_RAND);
-    apple.yy = r * DOT_SIZE;
+    apple.y = r * DOT_SIZE;
 }    
 
 function checkApple() {
