@@ -130,6 +130,7 @@ function locateApple() {
 function checkApple() {
     if (snake.x[0] == apple.x && snake.y[0] == apple.y) {
         locateApple();
+        snake.size++;
         scoreSpan += 1;
         var value = document.getElementById("score");
         scoreSpan = value.innerHTML;
