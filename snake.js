@@ -45,7 +45,7 @@ function init() {
 
     if(circularWay) {
         // write the  code here
-        
+        move();
       
 
     }
