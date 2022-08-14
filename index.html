@@ -1,64 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Snake Game</title>    
-        <style>
-            body {
-                margin-top: 7.5%;
-            }
 
-            canvas {
-                background: black
-            }
+<head>
+    <title>Snake Game</title>
+    <style>
+        body {
+            margin-top: 7.5%;
+        }
+        
+        canvas {
+            background: black
+        }
+        
+        .div-common {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+        
+        .canvas-div {
+            margin-bottom: 15px;
+        }
+        
+        .start {
+            font-size: 18px;
+            color: #084905;
+            border-color: #11850d;
+            background: transparent;
+            border-radius: 5px;
+        }
+        
+        .start-div {
+            margin-top: 5%;
+            margin-bottom: 5px;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="/images/favicon-icon.png">
+    <script src="snake.js"></script>
+</head>
 
-            .div-common {
-                display: flex; 
-                align-items: center; 
-                justify-content: center;
-                padding: 5px; 
-            }
+<body>
 
-            .canvas-div {
-                margin-bottom: 15px;
-            }
+    <div class="div-common start-div">
+        <button class="start" onclick="init();">Start</button>
+    </div>
+    <div class="div-common">
+        <input type="checkbox" id="circular-way" name="circular-way" value="circular-way">
+        <label for="circular-way">Circular way</label>
+    </div>
+    <div class="div-common">
+        <input type="radio" id="killed-by-hitting-itself" name="self-hit-beaviour" value="killed-by-hitting-itself">
+        <label for="killed-by-hitting-itself">Killed by hitting itself</label>
+        <input type="radio" id="snake-body-disappear" name="self-hit-beaviour" value="snake-body-dissapear">
+        <label for="snake-body-disappear">Snake body removed from bitten point</label>
+    </div>
+    <div class="div-common canvas-div">
+        <canvas id="myCanvas" width="300" height="300"></canvas>
+    </div>
+    <div class="div-common score-div">
+        <b style="color: #042303;">Score:  &nbsp;<span id="score">0</span></b>
+    </div>
+</body>
 
-            .start {
-                font-size: 18px; 
-                color: #084905; 
-                border-color: #11850d; 
-                background: transparent; 
-                border-radius: 5px;
-            }
-
-            .start-div { 
-                margin-top: 5%;
-                margin-bottom: 5px;
-            }
-        </style>
-        <link rel="icon" type="image/x-icon" href="/images/favicon-icon.png"> 
-        <script src="snake.js"></script>
-    </head>
-    
-    <body>
-
-        <div class="div-common start-div">
-            <button class="start" onclick="init();">Start</button>
-        </div>
-        <div class="div-common">
-            <input type="checkbox" id="circular-way" name="circular-way" value="circular-way">
-            <label for="circular-way">Circular way</label>
-        </div>
-        <div class="div-common">
-            <input type="radio" id="killed-by-hitting-itself" name="self-hit-beaviour" value="killed-by-hitting-itself">
-            <label for="killed-by-hitting-itself">Killed by hitting itself</label>
-            <input type="radio" id="snake-body-disappear" name="self-hit-beaviour" value="snake-body-dissapear">
-            <label for="snake-body-disappear">Snake body removed from bitten point</label>
-        </div>
-        <div class="div-common canvas-div">
-            <canvas id="myCanvas" width="300" height="300"></canvas> 
-        </div>
-        <div class="div-common score-div">
-            <b style="color: #042303;">Score:  &nbsp;<span id="score">0</span></b>
-        </div>
-    </body>
 </html>
