@@ -136,6 +136,7 @@ function checkApple() {
         var value = computerScore.innerHTML;
         value++;
         computerScore.innerHTML =value;
+        snake.size++;
     }
 }
 
