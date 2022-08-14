@@ -62,7 +62,6 @@ function init() {
     locateApple();
     setTimeout("gameCycle()", DELAY);
 }    
-
 function loadImages() {   
     
     bodyImage = new Image();
