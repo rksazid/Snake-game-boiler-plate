@@ -7,6 +7,10 @@ let snakeBodyDisappear;
 
 let appleImage;
 let bodyImage;
+let headImage;
+let apple_x;
+let apple_y;
+let score=0;
 
 let apple = {
     x: 0,
@@ -35,6 +39,8 @@ const LEFT_KEY = 37;
 const RIGHT_KEY = 39;
 const UP_KEY = 38;
 const DOWN_KEY = 40;
+const DOT_SIZE=10;
+const ALL_DOTS=200;
 
 function init() {
 
@@ -43,9 +49,19 @@ function init() {
     snakeBodyDisappear = document.getElementById('snake-body-disappear').checked;
 
     if(circularWay) {
+
         // write the  code here
     }
     if(killedByHittingItself) {
+
+        for(var i=0;i<snake.length-1;i++)
+        {
+            if(head.x==snake[i].x && head.y==snake[i].y){
+                gameOver();
+            }
+        }
+        
+
         // write the  code here
     }
     if(snakeBodyDisappear) {
@@ -55,12 +71,29 @@ function init() {
     canvas = document.getElementById('myCanvas');
     canvasContext = canvas.getContext('2d');
     scoreSpan = document.getElementById("score");
+    
 
+   // head();
+   
     loadImages();
     createInitialSnakePosition();
     locateApple();
     setTimeout("gameCycle()", DELAY);
+
 }    
+
+
+
+
+
+function restart(){
+   window.location.reload();
+
+}
+
+
+
+
 
 function loadImages() {   
     
@@ -69,7 +102,12 @@ function loadImages() {
     
     appleImage = new Image();
     appleImage.src = 'images/apple.png'; 
+
+    headImage=new Image();
+    headImage.src='images/head.png';
+    
 }
+
 
 function doDrawing() {
 
@@ -78,6 +116,7 @@ function doDrawing() {
     if (inGame) {
         drawApple();
         drawSnake();
+        //drawScore();
     } else {
         gameOver();
     }
@@ -100,9 +139,20 @@ function drawApple() {
 }
 
 function drawSnake() {
-    for (let z = 0; z < snake.size; z++) {
+    for (let z = 0; z < snake.size; z++){
+  
+    if (z==0)
+   {
+    canvasContext.drawImage(headImage,snake.x[z],snake.y[z]);
+   }
+else
+
+    {
         canvasContext.drawImage(bodyImage, snake.x[z], snake.y[z]);
+        
     }
+}
+
 }
 
 function gameOver() {
@@ -114,13 +164,48 @@ function gameOver() {
     canvasContext.fillText('Game over', CANVAS_WIDTH/2, CANVAS_HEIGHT/2);
 }
 
-function locateApple() {
-    // You have to write code here to place the apple in different position in the canvas
-}    
+function locateApple(){
+
+    // var l=Math.floor(Math.random()*MAX_RAND);
+    // apple.x=l *DOT_SIZE;
+
+    // var l=Math.floor(Math.random()*MAX_RAND);
+    // apple.y=l *DOT_SIZE;
+    
+
+
+}
+
 
 function checkApple() {
+    if(apple.x==snake.x[0] && apple.y==snake.y[0]){
+        let randX=Math.floor((Math.random()*29)+ 1);
+        let randY=Math.floor((Math.random()*29)+ 1);
+        apple.x=randX*10;
+        apple.y=randY*10;
+        apple.size+=1;
+        snake.size+=1;
+        score+=1;
+        
+
+
+
+    }
     // You have to check here whether the apple is eaten by the snake or not
 }
+
+
+ function drawScore()
+ {
+    
+        canvasContext.fillStyle = 'white'
+         
+        canvasContext.font = "10px verdena"
+        
+        scoreSpan.fillText("Score:"+score,canvas.clientWidth-50,10);
+
+ }
+
 
 function checkCollision() {
 
@@ -206,6 +291,7 @@ function gameCycle() {
         checkCollision();
         move();
         doDrawing();
+        //drawScore();
         setTimeout("gameCycle()", DELAY);
     }
 }
