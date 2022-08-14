@@ -51,11 +51,7 @@ function init() {
         // write the  code here
     }
     if(killedByHittingItself) {
-        for(var i=1;i<this.x.length-1;i++)
-        {
-
-        }
-
+        
 
         // write the  code here
     }
@@ -66,6 +62,7 @@ function init() {
     canvas = document.getElementById('myCanvas');
     canvasContext = canvas.getContext('2d');
     scoreSpan = document.getElementById("score");
+    
 
    // head();
     loadImages();
@@ -74,6 +71,19 @@ function init() {
     setTimeout("gameCycle()", DELAY);
 
 }    
+
+
+
+
+
+function restart(){
+   window.location.reload();
+
+}
+
+
+
+
 
 function loadImages() {   
     
