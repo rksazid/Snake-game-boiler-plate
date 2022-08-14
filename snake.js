@@ -5,16 +5,21 @@ let circularWay;
 let killedByHittingItself;
 let snakeBodyDisappear;
 let value=0;
-let countX=0;
-let countY=0;
+let countX=0,sumX=0;
+let countY=0,sumY=0;
 
 let appleImage;
+let boostImage;
 let bodyImage;
 let headImage;
 
 let apple = {
     x: 3,
     y: 3,
+};
+let boost={
+    x: 0,
+    y: 0,
 };
 
 let snake = {
@@ -50,7 +55,7 @@ function init() {
         
     }
     if(killedByHittingItself) {
-        gameOver();
+        
     }
     if(snakeBodyDisappear) {
         // write the  code here
@@ -71,6 +76,8 @@ function loadImages() {
     bodyImage.src = 'images/body.png'; 
     headImage= new Image();
     headImage.src='images/head.png';
+    boostImage=new Image();
+    boostImage.src='images/booster_apple.png';
     
     appleImage = new Image();
     appleImage.src = 'images/apple.png'; 
@@ -83,6 +90,7 @@ function doDrawing() {
     if (inGame) {
         drawApple();
         drawSnake();
+        drawBooster();
     } else {
         gameOver();
     }
@@ -98,6 +106,10 @@ function createInitialSnakePosition() {
 
 function clearCanvas() {
     canvasContext.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+}
+function drawBooster()
+{
+    canvasContext.drawImage(boostImage, boost.x, boost.y);
 }
 
 function drawApple() {
@@ -123,9 +135,9 @@ function gameOver() {
 function locateApple() {
     countX+=3;
     countY+=1;
-    if(countX%2)countY+=1;
     apple.x=countX*10;
     apple.y=countY*10;
+    
 }    
 
 function checkApple() {
@@ -137,6 +149,25 @@ function checkApple() {
         value++;
         computerScore.innerHTML =value;
         snake.size++;
+    }
+}
+function locateBooster() {
+    sumX+=3;
+    sumY+=1;
+    boost.x=sumX*10;
+    boost.y=sumY*10;
+    
+}    
+
+function checkBooster() {
+    if(snake.x[0]==boost.x && snake.y[0]==boost.y)
+    {
+        locateBooster();
+        var computerScore = document.getElementById('score');
+        var value = computerScore.innerHTML;
+        value+=5;
+        computerScore.innerHTML =value;
+        snake.size+=5;
     }
 }
 
