@@ -34,6 +34,18 @@
                 margin-top: 5%;
                 margin-bottom: 5px;
             }
+            .restart {
+                font-size: 18px; 
+                color: #084905; 
+                border-color: #11850d; 
+                background: transparent; 
+                border-radius: 5px;
+            }
+
+            .restart-div { 
+                margin-top: 1%;
+                margin-bottom: 1px;
+            }
         </style>
         <link rel="icon" type="image/x-icon" href="/images/favicon-icon.png"> 
         <script src="snake.js"></script>
@@ -43,6 +55,9 @@
 
         <div class="div-common start-div">
             <button class="start" onclick="init();">Start</button>
+        </div>
+        <div class="div-common restart-div">
+            <button class="restart" onclick="init();">ReStart</button>
         </div>
         <div class="div-common">
             <input type="checkbox" id="circular-way" name="circular-way" value="circular-way">
