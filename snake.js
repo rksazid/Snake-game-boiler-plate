@@ -6,6 +6,7 @@ let killedByHittingItself;
 let snakeBodyDisappear;
 
 let appleImage;
+let headImage;
 let bodyImage;
 
 let apple = {
@@ -63,6 +64,9 @@ function init() {
 }    
 
 function loadImages() {   
+
+    headImage = new Image();
+    headImage.src = 'images/head.png';
     
     bodyImage = new Image();
     bodyImage.src = 'images/body.png'; 
@@ -100,7 +104,13 @@ function drawApple() {
 }
 
 function drawSnake() {
-    for (let z = 0; z < snake.size; z++) {
+    for (let z = 0; z < snake.size; z++) 
+    if (z==0)
+    {
+        canvasContext.drawImage(headImage, snake.x[z], snake.y[z])
+    }
+    else
+    {
         canvasContext.drawImage(bodyImage, snake.x[z], snake.y[z]);
     }
 }
