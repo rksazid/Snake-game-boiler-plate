@@ -8,10 +8,11 @@ let snakeBodyDisappear; //boolean
 let appleImage;
 let bodyImage;
 
-let apple = {
-    x : Math.random() * 300,
-    y : Math.random() * 300,
+let  apple = {
+    x : 0,
+    y : 0,
 };
+
 
 let snake = {
     x: [],
@@ -44,6 +45,7 @@ function init() {
 
     if(circularWay) {
         // write the  code here
+        
     }
     if(killedByHittingItself) {
         // write the  code here
@@ -59,7 +61,7 @@ function init() {
 
     loadImages();
     createInitialSnakePosition();
-    locateApple();
+   // locateApple();
     setTimeout("gameCycle()", DELAY);
 }    
 
@@ -88,10 +90,10 @@ function doDrawing() {
 }
 
 function createInitialSnakePosition() {
-
+   let k = Math.floor(Math.random() *250);
     for (let z = 0; z < snake.size; z++) {
-        snake.x[z] = 50 - z * CELL_SIZE;
-        snake.y[z] = 50;
+        snake.x[z] = k - z * CELL_SIZE;
+        snake.y[z] = k;
     }
 }   
 
@@ -124,12 +126,13 @@ function gameOver() {
 
 function locateApple() {
     // You have to write code here to place the apple in different position in the canvas
-
+    apple.x=Math.random()*300,
+    apple.y=Math.random()*300;
 }    
 
 function checkApple() {
     // You have to check here whether the apple is eaten by the snake or not
-
+    if((apple.x==snake.x[0]) )locateApple();
 }
 
 function checkCollision() {
