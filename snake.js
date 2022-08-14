@@ -51,6 +51,7 @@ function init() {
     }
     if(killedByHittingItself) {
         // write the  code here
+        gameOver();
       
     }
     if(snakeBodyDisappear) {
