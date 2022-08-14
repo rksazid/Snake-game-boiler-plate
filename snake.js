@@ -23,7 +23,9 @@ let leftDirection = false;
 let rightDirection = true;
 let upDirection = false;
 let downDirection = false;
-let inGame = true;    
+let inGame = true; 
+let score=0;
+
 
 const DELAY = 140;
 const MAX_RAND = 29;
@@ -48,6 +50,7 @@ function init() {
     }
     if(killedByHittingItself) {
         // write the  code here
+
     }
     if(snakeBodyDisappear) {
         // write the  code here
@@ -63,6 +66,9 @@ function init() {
     setTimeout("gameCycle()", DELAY);
 }    
 
+
+
+
 function loadImages() {   
     
     headImage = new Image();
@@ -74,6 +80,13 @@ function loadImages() {
     appleImage = new Image();
     appleImage.src = 'images/apple.png'; 
 }
+
+function drawScore() {
+    canvasContext.fillStyle="white"// set our text color to white
+    canvasContext.font="10px verdena"//set font size to 10px of font family verdena
+    canvasContext.fillText("Score: " +score, canvas.clientWidth-50,10);// position our score at right hand corner
+    
+    }
 
 function doDrawing() {
 
@@ -138,7 +151,12 @@ function locateApple() {
 
 function checkApple() {
     // You have to check here whether the apple is eaten by the snake or not
-   
+    if ((snake.x[0] == apple.x) && (snake.y[0] == apple.y)) {
+
+        snake.size++;
+        score++;
+        locateApple();
+    }
 }
 
 function checkCollision() {
@@ -225,7 +243,11 @@ function gameCycle() {
         checkCollision();
         move();
         doDrawing();
+        drawScore();
         setTimeout("gameCycle()", DELAY);
     }
 }
-
+function restart ()
+{
+    window.location.reload();
+}
