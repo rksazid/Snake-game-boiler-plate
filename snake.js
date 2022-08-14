@@ -44,9 +44,14 @@ function init() {
 
     if(circularWay) {
         // write the  code here
+        
+      
+
     }
     if(killedByHittingItself) {
         // write the  code here
+        inGame=false;
+
     }
     if(snakeBodyDisappear) {
         // write the  code here
@@ -116,10 +121,12 @@ function gameOver() {
 
 function locateApple() {
     // You have to write code here to place the apple in different position in the canvas
-}    
+
+    }    
 
 function checkApple() {
     // You have to check here whether the apple is eaten by the snake or not
+
 }
 
 function checkCollision() {
