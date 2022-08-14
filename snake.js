@@ -49,6 +49,7 @@ function init() {
     snakeBodyDisappear = document.getElementById('snake-body-disappear').checked;
 
     if(circularWay) {
+
         // write the  code here
     }
     if(killedByHittingItself) {
