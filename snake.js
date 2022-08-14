@@ -1,9 +1,9 @@
 let canvas;
 let canvasContext;
 let scoreSpan;
-let circularWay;
-let killedByHittingItself;
-let snakeBodyDisappear;
+let circularWay;  //boolean 
+let killedByHittingItself; //boolean
+let snakeBodyDisappear; //boolean
 
 let appleImage;
 let bodyImage;
@@ -23,9 +23,9 @@ let leftDirection = false;
 let rightDirection = true;
 let upDirection = false;
 let downDirection = false;
-let inGame = true;    
+let inGame = true;    // total game time 
 
-const DELAY = 140;
+const DELAY = 140;  //refrase screen
 const MAX_RAND = 29;
 const CELL_SIZE = 10;
 const CANVAS_WIDTH = 300; 
@@ -47,6 +47,7 @@ function init() {
     }
     if(killedByHittingItself) {
         // write the  code here
+        gameOver();
     }
     if(snakeBodyDisappear) {
         // write the  code here
@@ -66,6 +67,9 @@ function loadImages() {
     
     bodyImage = new Image();
     bodyImage.src = 'images/body.png'; 
+
+    headImage = new Image();
+    headImage.src = 'images/head.png';
     
     appleImage = new Image();
     appleImage.src = 'images/apple.png'; 
@@ -100,9 +104,13 @@ function drawApple() {
 }
 
 function drawSnake() {
-    for (let z = 0; z < snake.size; z++) {
+    canvasContext.drawImage(headImage, snake.x[0], snake.y[0]);
+    for (let z = 1; z < snake.size; z++) {
         canvasContext.drawImage(bodyImage, snake.x[z], snake.y[z]);
+    
+
     }
+
 }
 
 function gameOver() {
@@ -116,6 +124,12 @@ function gameOver() {
 
 function locateApple() {
     // You have to write code here to place the apple in different position in the canvas
+
+   if(snake.x[0]==apple.x){
+    x = Math.random() * CANVAS_WIDTH;
+    y = Math.random() * CANVAS_HEIGHT;
+   }
+
 }    
 
 function checkApple() {
